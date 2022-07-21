@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Boris\\C#\\NoteBoard\\NoteBoard\\NoteBoard.csproj",
+      "projectUniqueName": "D:\\Boris\\C#\\Note-Board\\NoteBoard\\NoteBoard\\NoteBoard\\NoteBoard.csproj",
       "projectName": "NoteBoard",
-      "projectPath": "D:\\Boris\\C#\\NoteBoard\\NoteBoard\\NoteBoard.csproj",
+      "projectPath": "D:\\Boris\\C#\\Note-Board\\NoteBoard\\NoteBoard\\NoteBoard\\NoteBoard.csproj",
       "packagesPath": "C:\\Users\\Dicho\\.nuget\\packages\\",
-      "outputPath": "D:\\Boris\\C#\\NoteBoard\\NoteBoard\\obj\\",
+      "outputPath": "D:\\Boris\\C#\\Note-Board\\NoteBoard\\NoteBoard\\NoteBoard\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

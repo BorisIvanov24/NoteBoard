@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5DzMJl8yI591QlK5psXcO9yi2r9LOTmmlOOYGfEYjGJsA6cNwZxztWHH0yyL2WcGY+JPfd7mAEGBbQ33Op6raA==",
+  "dgSpecHash": "7b0waZeZqUQPCsbmy7IjqTNZ1TH6wTyAMfeAjwi3NACTklIImB1c5RBZKn6PUyzSekeSlYXkO5+PPBrPEAxi8A==",
   "success": true,
-  "projectFilePath": "D:\\Boris\\C#\\NoteBoard\\NoteBoard\\NoteBoard.csproj",
+  "projectFilePath": "D:\\Boris\\C#\\Note-Board\\NoteBoard\\NoteBoard\\NoteBoard\\NoteBoard.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

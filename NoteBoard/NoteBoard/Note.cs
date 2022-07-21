@@ -13,58 +13,80 @@ namespace NoteBoard
         public Rectangle rec;
         public Color col;
         public bool selected;
-        public Vector2 mousePos;
+        public bool resizeMode;
+        public Vector2 mousePosWhenSelected;
+        public Vector2 mousePosWhenResizing;
+        public Button resize;
+        public Button close;
 
-        public Note()
+        public Note(Texture2D a, Color b, Texture2D c)
         {
-            rec = new Rectangle(30, 100, 300, 150);
+            rec = new Rectangle(100, 100, 300, 150);
             this.selected = false;
-            col = Color.SKYBLUE;
-            mousePos = new Vector2(0, 0);
+            this.resizeMode = false;
+            col = b;
+            mousePosWhenSelected = new Vector2(0, 0);
+            mousePosWhenResizing = new Vector2(0, 0);
+            resize = new Button(new Rectangle(rec.x+rec.width-30, rec.y+rec.height-30, 20, 20), a, new Color());
+            close = new Button(new Rectangle(rec.x + rec.width - 20, rec.y, 20, 20), c, new Color());
         }
 
-        public Note(Rectangle a, Color b, bool c, Vector2 d)
+        public Note(Rectangle a, Color b, bool c, bool d, Vector2 e, Vector2 g, Button f, Button h)
         {
             rec = a;
             col = b;
             selected = c;
-            mousePos = d;
+            resizeMode = d;
+            mousePosWhenSelected = e;
+            mousePosWhenResizing = g;
+            resize = f;
+            close = h;
         }
 
         public void DrawNote()
         {
-            
-            int shadow = 10;
+            //Update Button rectangle
+            resize.rec = new Rectangle(rec.x + rec.width - 20, rec.y + rec.height - 20, 20, 20);
+            close.rec = new Rectangle(rec.x + rec.width - 20, rec.y, 20, 20);
+
+            int shadow = 10; //thicknes of the shadow
             if(this.selected)
             {
                
-                this.rec.x = (int)Raylib.GetMouseX() - (int)mousePos.X;
-                this.rec.y = (int)Raylib.GetMouseY() - (int)mousePos.Y;
+                //move note depending of the position of the mouse
+                this.rec.x = (int)Raylib.GetMouseX() - (int)mousePosWhenSelected.X;
+                this.rec.y = (int)Raylib.GetMouseY() - (int)mousePosWhenSelected.Y;
                
 
+                //Draw shadows
                 Raylib.DrawRectangle((int)rec.x+ shadow, (int)rec.y+(int)rec.height, (int)rec.width, shadow, Color.BLACK);
                 Raylib.DrawRectangle((int)rec.x+(int)rec.width, (int)rec.y + shadow, shadow, (int)rec.height, Color.BLACK);
             }
             Raylib.DrawRectangleRec(rec, col);
+            resize.DrawButton();
+            close.DrawButton();
         }
 
         public bool IsSelected()
         {
 
             if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_BUTTON_LEFT) &&
-               Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
-            {
-                if (mousePos.X == 0) mousePos = new Vector2(Raylib.GetMouseX() - rec.x, Raylib.GetMouseY() - rec.y);
+               Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec)&&!resizeMode&&
+               !Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), resize.rec))
+                {
+                if (mousePosWhenSelected.X == 0) 
+                mousePosWhenSelected = new Vector2(Raylib.GetMouseX() - rec.x, Raylib.GetMouseY() - rec.y);
                 
                 return true;
-
-            }
+                }
             else
-            {
-                mousePos = new Vector2(0,0);
+                {
+                mousePosWhenSelected = new Vector2(0,0);
                 return false;
-            }
+                }
         }
+
+       
 
 
     }
